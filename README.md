@@ -1,6 +1,11 @@
 # File Validation Pipeline
 
+This pipeline is validating a CSV file that will be used by a ML algorithm.
 
+I've tried to show a multi-angle approach:
+schemas definition, auto-generated Swagger documentation, unit and integration tests, CI/CD and library packaging.
+
+It would be usable by another module though pip after publishing it.
 
 ## Run the application locally
 
@@ -56,21 +61,26 @@ Scenario: An invalid CSV with duplicates is invalidated by the Machine Learning 
   Then the pipeline validates it and raises errors
 ```
 
-## Launch the load tests
-
-
-
-## Generate the Swagger contract
+## Generate the Swagger documentation
 
 To generate the documentation of the data contract based on the code, run:
 
 ```
-python spec.py
+python -m validator.spec
 ```
 
-It gives the following Swagger file:
+It generates the following Swagger file in `docs/doc.yml`:
 
-![alt tag](https://i.ibb.co/6njYkm2/Screenshot-2022-01-29-at-02-15-40.png)
+![alt tag](https://i.ibb.co/47yJMWq/Screenshot-2022-01-29-at-19-33-22.png)
 
 
 This file can be uploaded automatically in Confluence with the right plugin so the stakeholders and the developers share the same (reduces the risk of misunderstanding).
+
+## CI/CD with github actions (workflow)
+
+The CI has been setup with Github workflows (`.github/workflows/main.yml`). 
+
+It is currently building the package and running the tests at every push, see "action" tab on this repository:
+
+
+![alt tag](https://i.ibb.co/pdm3zjW/Screenshot-2022-01-29-at-18-52-00.png)

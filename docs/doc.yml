@@ -3,7 +3,7 @@ definitions:
     properties:
       account_type:
         enum:
-        - others
+        - other
         - facebook
         - google
         type: string
@@ -11,10 +11,12 @@ definitions:
         format: int32
         type: integer
       birthday:
+        format: date-time
         type: string
       guid:
         type: string
       signup_date:
+        format: date-time
         type: string
     required:
     - account_type

@@ -40,7 +40,6 @@ class Validator:
         schema, header = list(Entry().fields.keys()), self.dataframe.columns
         schema.sort(), header.sort()
         if schema != header:
-            #TODO: Raise dedicated errors
             raise ValueError(f"Invalid header {header}. Expected {schema}")
 
     def _validate_data_contract(self):
@@ -52,7 +51,6 @@ class Validator:
         """
         df, errors = Entry().validate_df(self.dataframe, unknown='EXCLUDE')
         if len(errors.collect()):
-            #TODO: Raise dedicated errors
             raise ValueError(errors.collect())
 
     def _validate_duplicates(self):
@@ -63,6 +61,5 @@ class Validator:
                     DUPLICATION_FIELD_TO_CHECK).count().filter(
                     "count > 1")
         if len(duplicate_count.collect()):
-            #TODO: Raise dedicated errors
             raise ValueError(
                 "Duplicated rows found: {}".format(duplicate_count.collect()))
