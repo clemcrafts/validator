@@ -84,3 +84,14 @@ It is currently building the package and running the tests at every push, see "a
 
 
 ![alt tag](https://i.ibb.co/pdm3zjW/Screenshot-2022-01-29-at-18-52-00.png)
+
+
+## Perspectives
+
+If I had to push the task further, I would: 
+
+- Go for a Dockerized version orchestrated with Kubernetes with auto-scale on CPU/Memory (preparing this to become a standalone fetching from a BLOB storage).
+- Prepare the infrastructure as a code with a Terraform module for the deployment.
+- Add a load test with locust using large files to demonstrate why using Spark matters for performance.
+
+
