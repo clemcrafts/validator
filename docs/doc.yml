@@ -1,0 +1,31 @@
+definitions:
+  'Input: EntrySchema':
+    properties:
+      account_type:
+        enum:
+        - others
+        - facebook
+        - google
+        type: string
+      age:
+        format: int32
+        type: integer
+      birthday:
+        type: string
+      guid:
+        type: string
+      signup_date:
+        type: string
+    required:
+    - account_type
+    - age
+    - birthday
+    - guid
+    - signup_date
+    type: object
+info:
+  description: Data Contract For Machine Learning Pipeline
+  title: data-contract-ml-pipeline
+  version: '1.0'
+paths: {}
+swagger: '2.0'

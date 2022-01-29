@@ -1,0 +1,8 @@
+behave
+pyspark
+pytest
+pandas
+coverage==5.1
+PyYAML==5.1.2
+apispec==3.0.0
+marshmallow-pyspark
