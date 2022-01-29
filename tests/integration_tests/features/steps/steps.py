@@ -4,7 +4,7 @@ import pytest
 
 
 @given('The pipeline is up and running')
-def pipeline_running(context):
+def pipeline_running(context: obj):
     """
     Starts the validation pipeline.
     :param obj context: context object being passed through functions.
@@ -12,7 +12,7 @@ def pipeline_running(context):
     context.validator = Validator()
 
 @when('The pipeline ingests a valid CSV')
-def pipeline_ingests_valid_csv(context):
+def pipeline_ingests_valid_csv(context: obj):
     """
     Ingests the valid CSV given in the task.
     :param obj context: context object being passed through functions.
@@ -22,7 +22,7 @@ def pipeline_ingests_valid_csv(context):
 
 
 @when('The pipeline ingests an invalid CSV')
-def pipeline_ingests_invalid_csv(context):
+def pipeline_ingests_invalid_csv(context: obj):
     """
     Ingests the invalid CSV given in the task.
     :param obj context: context object being passed through functions.
@@ -32,18 +32,18 @@ def pipeline_ingests_invalid_csv(context):
 
 
 @when('The pipeline ingests an invalid CSV with NANs')
-def pipeline_ingests_invalid_csv_with_nans(context):
+def pipeline_ingests_invalid_csv_with_nans(context: obj):
     """
-    Ingests the invalid CSV with NANs values.
+    Ingests an invalid CSV with NANs values.
     :param obj context: context object being passed through functions.
     """
     context.validator.load(
         "tests/integration_tests/features/steps/test_invalid_csv_nan.csv")
 
 @when('The pipeline ingests an invalid CSV with invalid accounts')
-def pipeline_ingests_invalid_csv_with_invalid_accounts(context):
+def pipeline_ingests_invalid_csv_with_invalid_accounts(context: obj):
     """
-    Ingests the invalid CSV with invalid accounts.
+    Ingests an invalid CSV with invalid accounts.
     :param obj context: context object being passed through functions.
     """
     context.validator.load(
@@ -51,9 +51,9 @@ def pipeline_ingests_invalid_csv_with_invalid_accounts(context):
         "test_invalid_csv_invalid_accounts.csv")
 
 @when('The pipeline ingests an invalid CSV with duplicates')
-def pipeline_ingests_invalid_csv_with_duplicates(context):
+def pipeline_ingests_invalid_csv_with_duplicates(context: obj):
     """
-    Ingests the invalid CSV with duplicates.
+    Ingests an invalid CSV with duplicates.
     :param obj context: context object being passed through functions.
     """
     context.validator.load(
@@ -61,16 +61,16 @@ def pipeline_ingests_invalid_csv_with_duplicates(context):
         "test_invalid_csv_duplicates.csv")
 
 @then('The pipeline validates it with no error')
-def pipeline_validates_without_error(context):
+def pipeline_validates_without_error(context: obj):
     """
-    The validation passed without error.
+    The validation is triggered and passes without error.
     :param obj context: context object being passed through functions.
     """
     context.validator.validate()
 
 
 @then('The pipeline validates it and raises errors')
-def pipeline_validates_with_error(context):
+def pipeline_validates_with_error(context: obj):
     """
     The validation raised errors.
     :param obj context: context object being passed through functions.

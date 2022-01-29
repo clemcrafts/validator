@@ -6,7 +6,7 @@ from .config import DUPLICATION_FIELD_TO_CHECK
 
 class Validator:
     """
-    This class is responsible of validating a CSV for a ML pipeline.
+    This class is responsible for validating a CSV for a ML pipeline.
     """
     def __init__(self):
         """
@@ -17,8 +17,8 @@ class Validator:
 
     def load(self, file: str):
         """
-        Load the file in a dataframe format. This is does not load the file in
-        memory but instantiate a RDD ready to be requested by bits.
+        Load the file in a dataframe format. This does not *really* load the
+        file in memory but instantiate a Spark RDD ready to be requested.
         :param str file: the file to use as input of the pipeline.
         """
         self.dataframe = self.spark.read.load(
@@ -26,11 +26,13 @@ class Validator:
 
     def validate(self):
         """
-        Validate the CSV file using business rules defined in the task.
+        Validate the CSV file using the business rules defined in the task.
         """
+        print("Validating the file...")
         self._validate_header()
         self._validate_data_contract()
         self._validate_duplicates()
+        print("... The file is valid.")
 
     def _validate_header(self):
         """
@@ -45,9 +47,6 @@ class Validator:
     def _validate_data_contract(self):
         """
         Validate each entry of the CSV file data based on a data schema.
-        n.b: the task specifies checks on NaN, we don't need any. These values
-        would not be accepted because they're not matching the expected types.
-        We verify that in various unit and integration tests.
         """
         df, errors = Entry().validate_df(self.dataframe, unknown='EXCLUDE')
         if len(errors.collect()):
@@ -55,7 +54,8 @@ class Validator:
 
     def _validate_duplicates(self):
         """
-        Validate that the file has no duplicates based on specified columns.
+        Validate that the file has no duplicates based on specified columns
+        defined in the configuration.
         """
         duplicate_count = self.dataframe.groupBy(
                     DUPLICATION_FIELD_TO_CHECK).count().filter(

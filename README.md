@@ -21,9 +21,13 @@ Install the libraries:
 
 `pip install -r requirements.txt`
 
-Launch the validator:
+To launch the validator against the valid file:
 
-`python validator.py`
+`python run.py --file tests/integration_tests/features/steps/test_valid_csv.csv`
+
+To launch the validator against the invalid file:
+
+`python run.py --file tests/integration_tests/features/steps/test_invalid_csv.csv`
 
 ## Launch the unit tests
 
@@ -90,8 +94,8 @@ It is currently building the package and running the tests at every push, see "a
 
 If I had to push the task further, I would: 
 
-- Go for a Dockerized version orchestrated with Kubernetes on CPU/Memory auto-scale (so this  fetching from a BLOB storage).
-- Prepare the infrastructure as a code with a Terraform module for the deployment.
-- Add a load test with locust using large files to demonstrate why using Spark matters for performance.
-
+- Go for a Dockerized version orchestrated with Kubernetes on CPU/Memory auto-scale (so this would be a standalone fetching from a BLOB storage).
+- Prepare the infrastructure-as-code with a Terraform module for the deployment.
+- Add a load test with locust using large files to demonstrate why using Spark matters for performance/resources.
+- The definition of the exceptions is a bit debatable. It would require specific exceptions for header, data and duplication errors.
 
