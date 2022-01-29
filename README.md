@@ -31,9 +31,18 @@ To launch the validator against the invalid file:
 
 ## Launch the unit tests
 
-To launch the unit tests:
+To launch the unit tests, this:
 
 ```python -m pytest tests```
+
+Will collect and run them:
+
+```
+================================================= test session starts ==================================================
+collected 11 items
+tests/unit_tests/test_validator.py ...........                                                                   [100%]
+============================================ 11 passed, 1 warning in 11.84s ============================================
+```
 
 ## Launch integration tests
 
@@ -41,7 +50,7 @@ To launch the unit tests:
 behave tests/integration_tests/features
 ```
 
-It will run the validator against various test CSVs:
+It will run the validator against various test CSVs covering important cases:
 
 ```
 Scenario: A valid CSV is validated by the Machine Learning pipeline
