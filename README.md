@@ -106,5 +106,5 @@ If I had to push the task further, I would:
 - Go for a Dockerized version orchestrated with Kubernetes on CPU/Memory auto-scale (so this would be a standalone fetching from a BLOB storage).
 - Prepare the infrastructure-as-code with a Terraform module for the deployment.
 - Add a load test with locust using large files to demonstrate why using Spark matters for performance/resources.
-- The definition of the exceptions is a bit debatable. It would require specific exceptions for header, data and duplication errors.
+- Improve the exceptions handling. It would require specific exceptions for header, data and duplication errors.
 
