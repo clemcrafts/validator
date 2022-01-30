@@ -44,7 +44,7 @@ tests/unit_tests/test_validator.py ...........                                  
 ============================================ 11 passed, 1 warning in 11.84s ============================================
 ```
 
-## Launch integration tests
+## Launch the integration tests
 
 ```
 behave tests/integration_tests/features
